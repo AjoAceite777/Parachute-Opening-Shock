@@ -1,6 +1,7 @@
 import numpy as np
 import pickle
 from interpolating_functions import evaluate_pflanz, evaluate_mit # Import the function
+import matplotlib.pyplot as plt
 
 #### EXTRACTING INTERPLATOR DATA FROM PICKLE FILE
 # Load the interpolators
@@ -66,6 +67,8 @@ pflanz_sol = evaluate_pflanz(data,'0.5', A_ballistic,1)
 print(f'Pflanz X1 = {pflanz_sol:.4f}')
 print(f'Pflanz Ck = {pflanz_sol*Cx:.4f}')
 print(f'Pflanz Force = {pflanz_sol*Cx*force_nominal:.2f} N')
+
+plt.show()
 
 
 

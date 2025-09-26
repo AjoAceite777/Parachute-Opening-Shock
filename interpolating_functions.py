@@ -29,7 +29,7 @@ def evaluate_mit(data, case, x_values, plotting = None):
             plot_MIT(data,case)
             plt.plot([x_values,x_values],[0, sol],color="blue")
             plt.plot([0,x_values],[sol, sol],color="blue")            
-            plt.show()
+            
         elif isinstance(x_values,np.ndarray):
             plot_MIT(data,case)
             
@@ -39,7 +39,7 @@ def evaluate_mit(data, case, x_values, plotting = None):
         
             plt.plot([x_values,x_values],[0, sol],color="blue")
             plt.plot([0,x_values],[sol, sol],color="blue")            
-            plt.show()
+            
         else:
             raise ValueError(f'Plotting cannot be performed with multiple input values')                              
     
@@ -69,8 +69,7 @@ def evaluate_pflanz(data, case, x_values, plotting = None):
         if isinstance(x_values,float):
             plot_pflanz(data,case)
             plt.plot([x_values,x_values],[0, sol],color="blue")
-            plt.plot([0,x_values],[sol, sol],color="blue")            
-            plt.show()            
+            plt.plot([0,x_values],[sol, sol],color="blue")                                 
         elif isinstance(x_values,np.ndarray):
             pflanz_ax = plot_pflanz(data, case, return_axes=True)
             
