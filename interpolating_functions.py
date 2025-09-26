@@ -53,6 +53,7 @@ def evaluate_pflanz(data, case, x_values, plotting = None):
         data (dict): The loaded pickle data containing 'Pflanz_functions'.
         case (str): The specific case (e.g., '0.5', '1', '2').
         x_values (array-like): Points at which to evaluate the interpolator.
+        plotting (any type): Will plot the interpolation if not None
 
     Returns:
         array: Interpolated y-values.
@@ -88,7 +89,6 @@ def evaluate_pflanz(data, case, x_values, plotting = None):
             pflanz_ax.plot([min_x,min_x],[0, min_sol],color="blue")
             pflanz_ax.plot([max_x,max_x],[0, max_sol],color="blue")
                     
-            plt.show()
         else:
             raise ValueError(f'Plotting cannot be performed with multiple input values')                              
     

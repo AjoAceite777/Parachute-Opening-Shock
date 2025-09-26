@@ -88,7 +88,7 @@ plt.xlabel("Value")
 plt.ylabel("Frequency")
 plt.title("Histogram of Opening Shock")
 plt.grid(True)
-plt.show()
+
 
 # Example post processing
 # Calculate the 95th percentile
@@ -96,4 +96,6 @@ plt.show()
 print('RESULTS')
 print(f'Average Opening Shock: {np.average(pflanz_force):.1f} N')
 print(f"With 95% confidence, the Opening shock is at most: {np.percentile(pflanz_force, 95):.1f} N")
+
+plt.show()
 
