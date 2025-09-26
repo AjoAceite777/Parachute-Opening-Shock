@@ -36,7 +36,7 @@ nfill       = 11.7  # Canopy fill constant                              [-]
 ########################### Define parameter PDF ###############################
 ################################################################################
 
-N           = 200    # Iterations per Degree of Freedom
+N           = 1000000    # Iterations per Degree of Freedom
 
 # The main uncertainties for this example will be the:
 #   - Nominal Drag Coefficient CD0: Equally likely to be between 0.7 and 0.8
@@ -55,24 +55,6 @@ Cx_vec = np.random.uniform(1,1.2,N)
 
 # Velocity
 v_vec = np.random.normal(24,5,N)
-
-################################################################################
-########################### All possible values ################################
-################################################################################
-
-# This is needed to create the matrix with all the values
-from itertools import product
-
-# Generate all combinations
-combinations = np.array(list(product(CD0_vec, Cx_vec, v_vec)))
-
-# Shuffle rows around so each combination is random
-np.random.shuffle(combinations)
-
-# Reassign each column to its variable. Keep same order
-CD0_vec = combinations[:, 0]
-Cx_vec  = combinations[:, 1]
-v_vec   = combinations[:, 2]
 
 ################################################################################
 ############################### Computation ####################################
