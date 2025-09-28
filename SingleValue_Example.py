@@ -1,6 +1,7 @@
 import numpy as np
 import pickle
 from interpolating_functions import evaluate_pflanz, evaluate_mit # Import the function
+from interpolating_functions import plot_pflanz_interpolation, plot_MIT_interpolation # Import the function
 import matplotlib.pyplot as plt
 
 #### EXTRACTING INTERPLATOR DATA FROM PICKLE FILE
@@ -46,29 +47,27 @@ else:
 
 n_gen_fill = v_ls*tf*Drag_integral/np.sqrt(S0*CD0)
 
-# Choose MIT graph according to the value of the generalized fill constant
-
-if n_gen_fill >= 4:
-    mit_sol = evaluate_mit(data, 'upper', Rm, 1)
-elif  n_gen_fill >= 1:
-    mit_sol = evaluate_mit(data, 'lower', Rm, 1)
-else:
-    raise ValueError(f"Generalized Fill Constant lower than 1, cannot apply MIT")
-
 force_nominal = 0.5*atm_density*(v_ls**2)*S0*CD0
 print(f'Steady State Force = {force_nominal:.2f} N')
 
-# Values according to MIT
-print(f'MIT Ck = {mit_sol:.4f}')
-print(f'MIT Force = {mit_sol*force_nominal:.2f} N')
-
 # Values according to Pflanz
-pflanz_sol = evaluate_pflanz(data,'0.5', A_ballistic,1)
+pflanz_sol = evaluate_pflanz(data,'0.5', A_ballistic)
+fig1, ax1 = plt.subplots() 
+plot_pflanz_interpolation(data, '0.5', A_ballistic, pflanz_sol, ax1)
 print(f'Pflanz X1 = {pflanz_sol:.4f}')
 print(f'Pflanz Ck = {pflanz_sol*Cx:.4f}')
 print(f'Pflanz Force = {pflanz_sol*Cx*force_nominal:.2f} N')
 
+# Values according to MIT
+mit_sol = evaluate_mit(data, n_gen_fill, Rm)
+fig2, ax2 = plt.subplots()
+plot_MIT_interpolation(data, n_gen_fill, Rm, mit_sol, ax2)
 plt.show()
+print(f'MIT Ck = {mit_sol:.4f}')
+print(f'MIT Force = {mit_sol*force_nominal:.2f} N')
+
+
+
 
 
 
