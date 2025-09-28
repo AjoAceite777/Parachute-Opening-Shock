@@ -28,7 +28,7 @@ v_ls        = 24    # Velocity of the body at the time of line stretch  [m/s]
 g           = 9.81  # Gravitational Acceleration                        [m/s^2]  
 
 CD0         = 0.8   # Nominal parachute drag coefficient                [-]
-S0          = 50 #12    # Nominal parachute surface area                    [m^2]
+S0          = 12    # Nominal parachute surface area                    [m^2]
 D0          = 4*np.sqrt(12/np.pi) # Parachute nominal diameter          [m]
 
 Cx          = 1.4   # Opening shock coefficient at infinite mass        [-]
